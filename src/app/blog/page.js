@@ -1,12 +1,14 @@
-import { promises as fs, readFile } from 'fs';
+
 import Link from 'next/link'
 
-export const dynamic = "force-static";
- 
+export const dynamic = "force-dynamic";
+
 async function Page() {
 
- const file = await fs.readFile("src/app/data/dataList.json", "utf-8");
- const newData = await JSON.parse(file)
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+    const url = await fetch(`${baseUrl}/api/apiData`);
+    const dataList = await url.json();
 
  function slugify(str) {
   return str
@@ -20,7 +22,7 @@ async function Page() {
     <>
 <div className="grid grid-cols-1 md:grid-cols-2 xs:grid-cols-1 lg:grid-cols-3 gap-10 px-5 py-6">
     {
-        newData.map((newData, index)=>(
+        dataList.map((newData, index)=>(
 <div key={index} class=" p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
     <Link href={`/blogpost/${slugify(newData.title)}`}>
         <h5 class="mb-2 text-2xl tracking-tight hover:underline font-normal text-gray-900 dark:text-white">{newData.title}</h5>

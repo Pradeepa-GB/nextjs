@@ -1,11 +1,11 @@
-[
+export const dataList = [
     {"id" : 1,
-    "title" : "Learn JavaScript...",
+    "title" : "Learn JavaScript",
      "content" : "JavaScript, often abbreviated as JS, is a programming language and core technology of the World Wide Web, alongside HTML and CSS. Ninety-nine percent of websites use JavaScript on the client side for webpage behavior." ,
      "Author" : "Pradeep GB"
     },
     {"id" : 2,
-    "title": "Learn React...",
+    "title": "Learn React",
      "content" : "React is a free and open-source front-end JavaScript that aims to make building user interfaces based on components more It is maintained by Meta and a community of individual developers and companies." ,
      "Author" : "Bhaskar GK"
     },

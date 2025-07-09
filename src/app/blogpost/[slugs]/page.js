@@ -4,6 +4,7 @@ import React from 'react'
 
 
 async function page({params}) {
+  
 
   function slugify(str) {
     return str
@@ -13,11 +14,13 @@ async function page({params}) {
     .replace(/(^-|-$)+/g, "");
 }
 
-  const file = await fs.readFile("src/app/data/dataList.json","utf-8");
-  const readData = JSON.parse(file);
-  const { slugs } = params;
+    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+
+    const url = await fetch(`${baseUrl}/api/apiData`);
+    const dataList = await url.json();
+    const { slugs } = params;
    
-  const newData = readData.find((item) => slugify(item.title) === slugs);
+  const newData = dataList.find((item) => slugify(item.title) === slugs);
   
   return (
     <>
