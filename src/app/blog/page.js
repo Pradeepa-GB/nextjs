@@ -5,10 +5,10 @@ export const dynamic = "force-dynamic";
 
 async function Page() {
 
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
+    const url =  "https://raw.githubusercontent.com/Pradeepa-GB/nextjs/refs/heads/main/src/app/data/dataList.json";
 
-    const url = await fetch(`${baseUrl}/api/apiData`);
-    const dataList = await url.json();
+    const newurl = await fetch(url);
+    const dataList = await newurl.json();
 
  function slugify(str) {
   return str
