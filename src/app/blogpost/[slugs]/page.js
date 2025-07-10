@@ -13,10 +13,8 @@ async function page({params}) {
     .replace(/[^a-z0-9]+/g, "-")
     .replace(/(^-|-$)+/g, "");
 }
-
-    const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "http://localhost:3000";
-
-    const url = await fetch(`${baseUrl}/api/apiData`);
+    const newurl = "https://raw.githubusercontent.com/Pradeepa-GB/nextjs/refs/heads/main/src/app/data/dataList.json";
+    const url = await fetch(newurl);
     const dataList = await url.json();
     const { slugs } = params;
    
